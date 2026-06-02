@@ -1,12 +1,20 @@
-import React from 'react'
-import AppRouter from './router/AppRouter'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RoleSelection from "./pages/RoleSelection.jsx";
+import AdminLogin from "./pages/AdminLogin.jsx";
+import StudentLogin from "./pages/StudentLogin.jsx";
+import StudentDashboard from "./pages/StudentDashboard";
 
-/**
- * App.jsx — Root component
- * Renders the application router. All routing logic lives in router/AppRouter.jsx.
- */
 function App() {
-  return <AppRouter />
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<RoleSelection />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/student-login" element={<StudentLogin />} />
+        <Route path="/student-dashboard" element={<StudentDashboard />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

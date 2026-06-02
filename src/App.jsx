@@ -3,6 +3,7 @@ import RoleSelection from "./pages/RoleSelection.jsx";
 import AdminLogin from "./pages/AdminLogin.jsx";
 import StudentLogin from "./pages/StudentLogin.jsx";
 import StudentDashboard from "./pages/StudentDashboard";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/student-login" element={<StudentLogin />} />
         <Route path="/student-dashboard" element={<StudentDashboard />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
       </Routes>
     </BrowserRouter>
   );

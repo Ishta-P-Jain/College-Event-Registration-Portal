@@ -1,40 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .dashboard {
-  padding: 30px;
+  min-height: 100vh;
+  background: #f5f7fb;
+  padding: 40px;
 }
 
-.dashboard h1 {
+.dashboard-title {
   text-align: center;
-  margin-bottom: 30px;
+  font-size: 2.5rem;
+  color: #1e293b;
+  margin-bottom: 40px;
 }
 
-.event-container {
+.events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
 }
 
 .event-card {
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,.1);
+  border-radius: 15px;
+  padding: 22px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
 }
 
-.event-card h2 {
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+.event-name {
   color: #2563eb;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+.event-info {
+  color: #475569;
   margin-bottom: 10px;
+  font-size: 0.95rem;
 }
 
-.event-card p {
-  margin-bottom: 8px;
-}
-
-.event-card button {
+.register-btn {
   width: 100%;
-  padding: 10px;
+  margin-top: 15px;
+  padding: 12px;
   border: none;
+  border-radius: 10px;
   background: #2563eb;
   color: white;
-  border-radius: 6px;
+  font-size: 15px;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-btn:hover {
+  background: #1d4ed8;
 }

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "../styles/auth.css";
+import { useNavigate } from "react-router-dom";
 
 function AdminLogin() {
+  const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -14,6 +16,7 @@ function AdminLogin() {
       password === "inspirante2026"
     ) {
       alert("Admin Login Successful");
+      navigate("/admin-dashboard");
     } else {
       alert("Invalid Credentials");
     }

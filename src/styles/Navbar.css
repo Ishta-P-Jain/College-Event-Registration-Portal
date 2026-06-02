@@ -155,3 +155,33 @@
     margin-top: 5px;
   }
 }
+
+/* ===========================
+   Additional navbar styles for
+   logged-in user name and logout
+   =========================== */
+
+/* Logged-in user's name shown in navbar */
+.navbar__user {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+  padding: 7px 10px;
+  display: block;
+}
+
+/* Logout button — looks like a link */
+.navbar__logout {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.72);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 5px;
+}
+
+.navbar__logout:hover {
+  color: #ff8080;
+  background-color: rgba(255, 100, 100, 0.1);
+}

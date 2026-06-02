@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import "./AdminDashboard.css";
+
 function AdminDashboard() {
 
   const [eventName, setEventName] = useState("");
@@ -7,58 +9,120 @@ function AdminDashboard() {
   const [date, setDate] = useState("");
   const [capacity, setCapacity] = useState("");
 
-  return (
-    <div>
+  const handleCreateEvent = async (e) => {
+  e.preventDefault();
 
-      <h1>Admin Dashboard</h1>
+  try {
+
+    const response = await fetch(
+      "http://localhost:5000/api/events",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          event_name: eventName,
+          event_date: date,
+          venue,
+          capacity,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    alert(data.message);
+
+    setEventName("");
+    setDate("");
+    setVenue("");
+    setCapacity("");
+
+  } catch (error) {
+    console.log(error);
+
+    alert("Something went wrong");
+  }
+};
+
+  return (
+  <div className="admin-dashboard">
+
+    <h1 className="admin-title">
+      Admin Dashboard
+    </h1>
+
+    <div className="form-card">
 
       <h2>Create Event</h2>
 
-      <form>
+        <form onSubmit={handleCreateEvent}>
+            
 
-        <input
-          type="text"
-          placeholder="Event Name"
-          value={eventName}
-          onChange={(e) =>
-            setEventName(e.target.value)
-          }
-        />
+        <div className="form-group">
+          <label>Event Name</label>
+          <input
+            className="form-input"
+            type="text"
+            value={eventName}
+            onChange={(e) =>
+              setEventName(e.target.value)
+            }
+          />
+        </div>
 
-        <input
-          type="date"
-          value={date}
-          onChange={(e) =>
-            setDate(e.target.value)
-          }
-        />
+        <div className="form-group">
+          <label>Date</label>
+          <input
+            className="form-input"
+            type="date"
+            value={date}
+            onChange={(e) =>
+              setDate(e.target.value)
+            }
+          />
+        </div>
 
-        <input
-          type="text"
-          placeholder="Venue"
-          value={venue}
-          onChange={(e) =>
-            setVenue(e.target.value)
-          }
-        />
+        <div className="form-group">
+          <label>Venue</label>
+          <input
+            className="form-input"
+            type="text"
+            value={venue}
+            onChange={(e) =>
+              setVenue(e.target.value)
+            }
+          />
+        </div>
 
-        <input
-          type="number"
-          placeholder="Capacity"
-          value={capacity}
-          onChange={(e) =>
-            setCapacity(e.target.value)
-          }
-        />
+        <div className="form-group">
+          <label>Capacity</label>
+          <input
+            className="form-input"
+            type="number"
+            value={capacity}
+            onChange={(e) =>
+              setCapacity(e.target.value)
+            }
+          />
+        </div>
 
-        <button>
+        <button
+          className="create-btn"
+          type="submit"
+        >
           Create Event
         </button>
 
       </form>
 
     </div>
-  );
+
+  </div>
+);
 }
 
 export default AdminDashboard;

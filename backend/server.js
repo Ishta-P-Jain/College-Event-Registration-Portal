@@ -5,10 +5,12 @@ const db = require("./config/db");
 const app = express();
 
 const eventRoutes = require("./routes/eventRoutes");
+const registrationRoutes = require("./routes/registrationRoutes");
 
 app.use(cors()); // 👈 Add this
 
 app.use(express.json());
+app.use("/api/registrations", registrationRoutes);
 
 app.use("/api/events", eventRoutes);
 

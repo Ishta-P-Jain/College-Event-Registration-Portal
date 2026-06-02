@@ -20,5 +20,39 @@ router.get("/", async (req, res) => {
     });
   }
 });
+router.post("/", async (req, res) => {
+  try {
+    const {
+      event_name,
+      event_date,
+      venue,
+      capacity
+    } = req.body;
 
+    await db.query(
+      `
+      INSERT INTO events
+      (event_name,event_date,venue,capacity)
+      VALUES (?,?,?,?)
+      `,
+      [
+        event_name,
+        event_date,
+        venue,
+        capacity
+      ]
+    );
+
+    res.status(201).json({
+      message: "Event created successfully",
+    });
+
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: "Failed to create event",
+    });
+  }
+});
 module.exports = router;

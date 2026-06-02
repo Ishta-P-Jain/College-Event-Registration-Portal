@@ -1,0 +1,43 @@
+/* ===========================
+   global.css
+   Base styles for the whole app
+   =========================== */
+
+/* Remove default margin and padding from everything */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base body styles */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 16px;
+  color: #222222;
+  background-color: #f5f5f5;
+  line-height: 1.6;
+}
+
+/* Remove underline from all links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove bullet points from lists */
+ul {
+  list-style: none;
+}
+
+/* Make buttons use the same font as the page */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Make inputs use the same font as the page */
+input {
+  font-family: inherit;
+  font-size: 16px;
+}

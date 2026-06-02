@@ -1,18 +1,12 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from 'react'
+import AppRouter from './router/AppRouter'
 
-import Home from "./pages/Home.jsx";
-import Login from "./pages/Login.jsx";
-import Register from "./pages/Register.jsx";
+/**
+ * App.jsx — Root component
+ * Renders the application router. All routing logic lives in router/AppRouter.jsx.
+ */
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return <AppRouter />
 }
 
-export default App;
+export default App

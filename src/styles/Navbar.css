@@ -1,0 +1,157 @@
+/* ===========================
+   Navbar.css
+   Styles for the top navigation bar
+   =========================== */
+
+/* The main navbar bar */
+.navbar {
+  background-color: #1a3a5c;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+
+/* Centers the content and limits max width */
+.navbar .container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo area (icon + text side by side) */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* The emoji badge behind the logo icon */
+.navbar__logo-badge {
+  background-color: #f0a500;
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+/* Portal name text */
+.navbar__logo-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Small subtitle below the name */
+.navbar__logo-sub {
+  font-size: 11px;
+  color: #f0c060;
+  display: block;
+  letter-spacing: 1px;
+}
+
+/* The group of nav links on the right */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Each nav link */
+.navbar__link {
+  color: #cccccc;
+  padding: 7px 14px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Nav link hover effect */
+.navbar__link:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Active page link (highlighted in gold) */
+.navbar__link.active {
+  color: #f0c060;
+}
+
+/* The "Register" button style link */
+.navbar__link--cta {
+  background-color: #f0a500;
+  color: #1a3a5c;
+  font-weight: 700;
+  padding: 7px 20px;
+}
+
+.navbar__link--cta:hover {
+  background-color: #f0c060;
+  color: #1a3a5c;
+}
+
+/* Hamburger button — hidden on desktop */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* Each line in the hamburger icon */
+.navbar__hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 2px;
+}
+
+/* ===========================
+   Mobile styles (screen smaller than 600px)
+   =========================== */
+@media (max-width: 600px) {
+  /* Show the hamburger button */
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  /* Hide links by default on mobile */
+  .navbar__links {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    right: 0;
+    background-color: #1a3a5c;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px;
+    gap: 5px;
+  }
+
+  /* Show links when menu is open */
+  .navbar__links.open {
+    display: flex;
+  }
+
+  .navbar__link {
+    padding: 10px 15px;
+  }
+
+  .navbar__link--cta {
+    text-align: center;
+    margin-top: 5px;
+  }
+}

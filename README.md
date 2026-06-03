@@ -1,16 +1,71 @@
-# React + Vite
+# College Event Registration Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+A full-stack web application that allows administrators to create and manage college events while enabling students to register for upcoming events.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
 
-## React Compiler
+* Frontend: React.js
+* Backend: Node.js + Express.js
+* Database: MySQL
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+### Admin
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* Login using admin credentials
+* Create new events
+* View event statistics
+* View registered students for each event
+
+### Student
+
+* Login using student credentials
+* Browse upcoming events
+* Register for events
+* View personal registrations
+* Prevent duplicate registrations
+
+## Installation
+
+### Frontend
+
+```bash
+npm install
+npm run dev
+```
+
+### Backend
+
+```bash
+cd backend
+npm install
+node server.js
+```
+
+## Database Setup
+
+1. Create a MySQL database.
+2. Import the SQL dump/seed file.
+3. Update database credentials inside `.env`.
+
+## Environment Variables
+
+Create a `.env` file inside backend:
+
+```env
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=college_events
+```
+
+## Known Issues
+
+* Admin statistics refresh requires page refresh after creating an event.
+* Authentication uses hardcoded credentials as specified in the assignment.
+
+## Author
+
+Ishta P Jain

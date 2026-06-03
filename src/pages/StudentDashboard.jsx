@@ -88,14 +88,34 @@ function StudentDashboard() {
               ).toLocaleDateString()}
             </p>
 
-            <button
-              className="register-btn"
-              onClick={() =>
-                handleRegister(event.id)
-              }
-            >
-              Register
-            </button>
+            <p className="event-info">
+              Registered:
+              {event.registered_count}
+              /
+              {event.capacity}
+            </p>
+
+            {
+              event.registered_count >= event.capacity
+              ? (
+                  <button
+                    disabled
+                    className="register-btn"
+                  >
+                    FULL
+                  </button>
+                )
+              : (
+                  <button
+                    className="register-btn"
+                    onClick={() =>
+                      handleRegister(event.id)
+                    }
+                  >
+                    Register
+                  </button>
+                )
+            }
 
           </div>
         ))}

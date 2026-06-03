@@ -2,15 +2,55 @@ const express = require("express");
 const router = express.Router();
 const db = require("../config/db");
 
-
+// REGISTER FOR EVENT
 router.post("/", async (req, res) => {
   try {
     const { studentId, eventId } = req.body;
 
-    // Check if already registered
+    // Check event capacity
+    const [eventRows] = await db.query(
+      `
+      SELECT capacity
+      FROM events
+      WHERE id = ?
+      `,
+      [eventId]
+    );
+
+    if (eventRows.length === 0) {
+      return res.status(404).json({
+        message: "Event not found",
+      });
+    }
+
+    const capacity = eventRows[0].capacity;
+
+    // Count registrations
+    const [countRows] = await db.query(
+      `
+      SELECT COUNT(*) AS total
+      FROM registrations
+      WHERE event_id = ?
+      `,
+      [eventId]
+    );
+
+    const registeredCount = countRows[0].total;
+
+    // Event full check
+    if (registeredCount >= capacity) {
+      return res.status(400).json({
+        message: "Event is full",
+      });
+    }
+
     const [existing] = await db.query(
-      `SELECT * FROM registrations
-       WHERE student_id = ? AND event_id = ?`,
+      `
+      SELECT *
+      FROM registrations
+      WHERE student_id = ?
+      AND event_id = ?
+      `,
       [studentId, eventId]
     );
 
@@ -21,8 +61,11 @@ router.post("/", async (req, res) => {
     }
 
     await db.query(
-      `INSERT INTO registrations(student_id,event_id)
-       VALUES (?, ?)`,
+      `
+      INSERT INTO registrations
+      (student_id, event_id)
+      VALUES (?, ?)
+      `,
       [studentId, eventId]
     );
 
@@ -47,10 +90,10 @@ router.get("/:studentId", async (req, res) => {
     const [registrations] = await db.query(
       `
       SELECT
-      events.id,
-      events.event_name,
-      events.event_date,
-      events.venue
+        events.id,
+        events.event_name,
+        events.event_date,
+        events.venue
 
       FROM registrations
 

@@ -284,7 +284,6 @@ GET /api/registrations/:studentId
 
 * Authentication currently uses assignment-provided credentials.
 * Admin statistics refresh after page reload.
-* Search functionality is not implemented.
 
 ---
 

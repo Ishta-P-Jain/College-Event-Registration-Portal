@@ -10,4 +10,4 @@ I implemented a separate page for viewing registered students of an event instea
 
 ## One thing I would improve with more time
 
-I would implement JWT-based authentication with protected routes and role-based access control so that admin and student functionality is fully secured. I would also improve the UI responsiveness for mobile devices.
+With more time, I would implement a real-time event management experience using WebSockets. Currently, registration counts and event statistics update after refreshing or revisiting pages. A real-time architecture would allow administrators to instantly see registration changes, capacity utilization, and event status updates as students register. This would make the system more scalable and closer to how production event management platforms operate.

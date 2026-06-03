@@ -31,7 +31,6 @@ A full-stack web application that allows administrators to manage college events
 ## Frontend
 
 * React.js
-* React Router
 * CSS
 
 ## Backend
@@ -167,13 +166,6 @@ Username: asha.rao
 Password: student123
 ```
 
-### Ravi Shetty
-
-```text
-Username: ravi.shetty
-Password: student123
-```
-
 Additional student accounts are available in the seeded database.
 
 ---
@@ -276,9 +268,6 @@ GET /api/registrations/:studentId
 ---
 
 # Future Improvements
-
-If more time were available, the following enhancements would be implemented:
-
 * JWT-based authentication
 * Role-based route protection
 * Search and filter events

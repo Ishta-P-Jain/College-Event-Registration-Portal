@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const db = require("../config/db");
 
-// REGISTER FOR EVENT
+
+
 router.post("/", async (req, res) => {
   try {
     const { studentId, eventId } = req.body;
@@ -25,7 +26,6 @@ router.post("/", async (req, res) => {
 
     const capacity = eventRows[0].capacity;
 
-    // Count registrations
     const [countRows] = await db.query(
       `
       SELECT COUNT(*) AS total

@@ -107,4 +107,85 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/:eventId/registrations", async (req, res) => {
+  try {
+
+    const { eventId } = req.params;
+
+    const [students] = await db.query(
+      `
+      SELECT
+      users.id,
+      users.name,
+      users.username
+
+      FROM registrations
+
+      JOIN users
+      ON registrations.student_id = users.id
+
+      WHERE registrations.event_id = ?
+      `,
+      [eventId]
+    );
+
+    res.status(200).json(students);
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+      message: "Failed to fetch registrations",
+    });
+
+  }
+});
+
+router.get("/:eventId/details", async (req, res) => {
+  try {
+
+    const { eventId } = req.params;
+
+    const [event] = await db.query(
+      `
+      SELECT *
+      FROM events
+      WHERE id = ?
+      `,
+      [eventId]
+    );
+
+    const [students] = await db.query(
+      `
+      SELECT
+      users.id,
+      users.name
+
+      FROM registrations
+
+      JOIN users
+      ON registrations.student_id = users.id
+
+      WHERE registrations.event_id = ?
+      `,
+      [eventId]
+    );
+
+    res.json({
+      event: event[0],
+      students,
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+      message: "Failed to fetch event details",
+    });
+
+  }
+});
+
 module.exports = router;

@@ -71,3 +71,40 @@
 .create-btn:hover {
   background: #1d4ed8;
 }
+
+table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+}
+
+th {
+  background: #2563eb;
+  color: white;
+}
+
+th,
+td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.green {
+  color: #065f46;
+}
+
+.orange {
+  color: #92400e;
+}
+
+.red {
+  color: #991b1b;
+}

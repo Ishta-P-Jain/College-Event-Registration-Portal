@@ -2,14 +2,17 @@ const express = require("express");
 const cors = require("cors");
 const db = require("./config/db");
 
+const authRoutes = require("./routes/authRoutes");
+
 const app = express();
 
 const eventRoutes = require("./routes/eventRoutes");
 const registrationRoutes = require("./routes/registrationRoutes");
 
-app.use(cors()); // 👈 Add this
+app.use(cors()); 
 
 app.use(express.json());
+app.use("/api/auth", authRoutes);
 app.use("/api/registrations", registrationRoutes);
 
 app.use("/api/events", eventRoutes);

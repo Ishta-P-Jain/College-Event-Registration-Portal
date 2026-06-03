@@ -4,7 +4,7 @@ function MyRegistrations() {
 
   const [registrations, setRegistrations] = useState([]);
 
-  const studentId = 2;
+  const studentId = localStorage.getItem("studentId");
 
   useEffect(() => {
 

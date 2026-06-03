@@ -12,7 +12,7 @@ function AdminLogin() {
     e.preventDefault();
 
     if (
-    //   username === "admin" &&
+      username === "admin" &&
       password === "inspirante2026"
     ) {
       alert("Admin Login Successful");

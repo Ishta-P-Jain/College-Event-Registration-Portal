@@ -7,16 +7,56 @@ function StudentLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleLogin = async (e) => {
+  e.preventDefault();
 
-    if (password === "student123") {
-      alert("Student Login Successful");
-      navigate("/student-dashboard");
-    } else {
-      alert("Invalid Credentials");
+  try {
+
+    const response = await fetch(
+      "http://localhost:5000/api/auth/login",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.message);
+      return;
     }
-  };
+
+    localStorage.setItem(
+      "studentId",
+      data.user.id
+    );
+
+    localStorage.setItem(
+      "studentName",
+      data.user.name
+    );
+
+    alert("Login Successful");
+
+    navigate("/student-dashboard");
+
+  } catch (error) {
+
+    console.log(error);
+
+    alert("Login Failed");
+
+  }
+};
 
   return (
     <div className="container">

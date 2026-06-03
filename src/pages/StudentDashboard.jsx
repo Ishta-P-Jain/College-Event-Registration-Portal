@@ -6,8 +6,8 @@ function StudentDashboard() {
   const [events, setEvents] = useState([]);
   const navigate = useNavigate();
 
-  // TEMPORARY STUDENT ID
-  const studentId = 2;
+  const studentId = localStorage.getItem("studentId");
+  // const studentName = localStorage.getItem("studentName");
 
   useEffect(() => {
     fetch("http://localhost:5000/api/events")
@@ -48,6 +48,18 @@ function StudentDashboard() {
 
   return (
     <div className="dashboard">
+      <button style={{ position: "absolute", top: "20px", right: "20px", padding: "10px 20px", cursor: "pointer", background: "#dc3545", color: "#fff", border: "none", borderRadius: "5px" }}
+  onClick={() => {
+
+    localStorage.clear();
+
+    navigate("/");
+
+  }}
+>
+  Logout
+</button>
+    
 
       <h1 className="dashboard-title">
         Upcoming Events

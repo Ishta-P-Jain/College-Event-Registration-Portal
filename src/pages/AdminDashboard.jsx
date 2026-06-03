@@ -1,8 +1,12 @@
 import { useState } from "react";
 
 import "./AdminDashboard.css";
+import { useNavigate } from "react-router-dom";
+import AdminStats from "../components/AdminStats";
+
 
 function AdminDashboard() {
+  const navigate = useNavigate();
 
   const [eventName, setEventName] = useState("");
   const [venue, setVenue] = useState("");
@@ -120,6 +124,8 @@ function AdminDashboard() {
       </form>
 
     </div>
+
+     <AdminStats />
 
   </div>
 );
